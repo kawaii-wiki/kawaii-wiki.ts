@@ -1,7 +1,7 @@
 # Build and typecheck once on the native GitHub runner. The resulting source and
 # web assets are architecture-independent; only the final runtime dependency
 # install needs to run for each target platform.
-FROM --platform=$BUILDPLATFORM docker.io/oven/bun:1.3.14 AS deps
+FROM --platform=$BUILDPLATFORM docker.io/oven/bun:1.4.3 AS deps
 
 WORKDIR /app
 
@@ -23,7 +23,7 @@ COPY . .
 RUN cd apps/web && node ../../node_modules/vite/bin/vite.js build
 RUN bun --filter '@kawaii-wiki/server' typecheck
 
-FROM docker.io/oven/bun:1.3.14-slim AS runtime
+FROM docker.io/oven/bun:1.4.3-slim AS runtime
 
 WORKDIR /app
 
