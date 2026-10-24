@@ -1,6 +1,6 @@
 {
   "name": "kawaii-wiki.ts",
-  "version": "1.0.34",
+  "version": "1.0.35",
   "packageManager": "bun@1.4.4",
   "license": "0BSD",
   "private": true,
