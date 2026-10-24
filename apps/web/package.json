@@ -24,7 +24,7 @@
     "codemirror": "^6.0.1",
     "diff": "^9.0.0",
     "highlight.js": "^11.11.1",
-    "katex": "^0.18.0",
+    "katex": "^0.18.11",
     "mermaid": "^11.16.1",
     "pinia": "^4.0.2",
     "vue": "^3.5.18",
@@ -38,10 +38,10 @@
     "@vitejs/plugin-vue": "^6.0.7",
     "@types/diff": "^8.0.0",
     "@vue/test-utils": "^2.4.11",
-    "happy-dom": "^20.10.6",
+    "happy-dom": "^21.0.4",
     "unocss": "^66.7.5",
-    "vite": "^8.1.4",
-    "vitest": "^4.1.9",
+    "vite": "^8.3.5",
+    "vitest": "^4.1.12",
     "vue-tsc": "^3.3.7"
   }
 }
