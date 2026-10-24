@@ -9,22 +9,22 @@
       # Match the version pinned in package.json (packageManager / engines.bun).
       # nixpkgs ships a slightly older Bun, so we pin the official release
       # binary per system to keep local dev byte-for-byte with CI.
-      bunVersion = "1.3.14";
+      bunVersion = "1.4.4";
 
       # `nix store prefetch-file` hashes for
       #   https://github.com/oven-sh/bun/releases/download/bun-v${bunVersion}/bun-<asset>.zip
       bunAssets = {
         "x86_64-linux" = {
           asset = "linux-x64";
-          hash = "sha256-lR7iruhV8IWVruxiJSJqKY0/6oOj3NZGXAnLzN9+hI8=";
+          hash = "sha256-v4zL+ysLgBWeD5ptFcVTF63YB3U028YTCj7bUvzLOVw=";
         };
         "aarch64-linux" = {
           asset = "linux-aarch64";
-          hash = "sha256-on/7Y6gxA3WDbg1vZorhf6jY0YuIw3yCHGUzGXOhmjs=";
+          hash = "sha256-uqa7NvUdblhWHgK76oJQOKnfRU9nPW13bou/hvjHhQ4=";
         };
         "aarch64-darwin" = {
           asset = "darwin-aarch64";
-          hash = "sha256-2LliIYKK1vl6x6wKt+lYcjQa92MAHogD6CZ2UsJlJiA=";
+          hash = "sha256-wkDX8My5DCY6hJ/NsJt+5iYw2SE0jtaq/ahrnVd7xRA=";
         };
       };
 

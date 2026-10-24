@@ -4,7 +4,7 @@ Thank you for helping improve kawaii-wiki.ts. For substantial product-scope
 changes, open an issue before implementation. Security reports belong in the
 private process described in `SECURITY.md`.
 
-Development requires Bun 1.3.14. From the repository root:
+Development requires Bun 1.4.4. From the repository root:
 
 ```bash
 bun install --frozen-lockfile
