@@ -1,5 +1,5 @@
 /** Safe renderer implementations for typed Markdown fence blocks. */
-import type MarkdownIt from 'markdown-it'
+import type { MarkdownIt } from 'markdown-it'
 import { slugifyHeading } from './slug.ts'
 
 const escapeHtml = (value: string): string =>

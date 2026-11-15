@@ -13,7 +13,7 @@
   "overrides": {
     "esbuild": "0.25.12",
     "vite": "8.3.5",
-    "linkify-it": "5.0.2",
+    "linkify-it@<5.0.2": "5.0.2",
     "dompurify": "3.4.17",
     "brace-expansion": "5.0.12",
     "postcss": "8.5.23",
@@ -50,7 +50,7 @@
   },
   "devDependencies": {
     "@playwright/test": "^1.64.1",
-    "oxlint": "1.75.0",
+    "oxlint": "1.83.0",
     "typescript": "^5.9.3"
   },
   "engines": {

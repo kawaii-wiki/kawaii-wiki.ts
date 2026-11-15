@@ -7,7 +7,7 @@
  * contents, instead of mutating shared renderer state.
  */
 /// <reference path="./markdown-plugins.d.ts" />
-import MarkdownIt from 'markdown-it'
+import MarkdownItFactory, { type MarkdownIt } from 'markdown-it'
 import anchor from 'markdown-it-anchor'
 import footnote from 'markdown-it-footnote'
 import taskLists from 'markdown-it-task-lists'
@@ -125,7 +125,7 @@ export const registerFenceRenderer = (info: string, render: FenceRenderer): void
 }
 
 const createMarkdownIt = (rendererOptions: MarkdownRendererOptions = {}): MarkdownIt => {
-  const renderer = new MarkdownIt({
+  const renderer = new MarkdownItFactory({
     html: false, // never trust raw HTML in wiki content
     linkify: true,
     typographer: true,
@@ -200,7 +200,7 @@ const renderMarkdownWith = (renderer: MarkdownIt, content: string): RenderResult
         if (level >= 1 && level <= tocDepth) {
           const inline = tokens[i + 1]
           toc.push({
-            id: open.attrGet('id') ?? '',
+            id: String(open.attrGet('id') ?? ''),
             text: inline?.content ?? '',
             level,
           })

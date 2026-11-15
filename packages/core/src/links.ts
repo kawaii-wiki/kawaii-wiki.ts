@@ -1,5 +1,5 @@
 /** Wiki-link parsing plus internal-link extraction and move rewriting. */
-import MarkdownIt from 'markdown-it'
+import type { MarkdownIt } from 'markdown-it'
 import { slugifyHeading } from './slug.ts'
 
 export interface PageLink {

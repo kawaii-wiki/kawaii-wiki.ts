@@ -3,13 +3,13 @@
 // markdown-it's `.use()` signature — no `any` or `@ts-ignore` needed.
 
 declare module 'markdown-it-footnote' {
-  import type MarkdownIt from 'markdown-it'
+  import type { MarkdownIt } from 'markdown-it'
   const plugin: (md: MarkdownIt) => void
   export default plugin
 }
 
 declare module 'markdown-it-task-lists' {
-  import type MarkdownIt from 'markdown-it'
+  import type { MarkdownIt } from 'markdown-it'
   interface TaskListsOptions {
     readonly enabled?: boolean
     readonly label?: boolean
@@ -20,13 +20,13 @@ declare module 'markdown-it-task-lists' {
 }
 
 declare module 'markdown-it-imsize' {
-  import type MarkdownIt from 'markdown-it'
+  import type { MarkdownIt } from 'markdown-it'
   const plugin: (md: MarkdownIt, options?: { readonly autofill?: boolean }) => void
   export default plugin
 }
 
 declare module 'markdown-it-katex' {
-  import type MarkdownIt from 'markdown-it'
+  import type { MarkdownIt } from 'markdown-it'
   interface KatexOptions {
     readonly throwOnError?: boolean
     readonly strict?: boolean | string
@@ -37,7 +37,7 @@ declare module 'markdown-it-katex' {
 }
 
 declare module 'markdown-it-emoji' {
-  import type MarkdownIt from 'markdown-it'
+  import type { MarkdownIt } from 'markdown-it'
   export const bare: (md: MarkdownIt) => void
   export const light: (md: MarkdownIt) => void
   export const full: (md: MarkdownIt) => void

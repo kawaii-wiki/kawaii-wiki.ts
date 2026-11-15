@@ -4,7 +4,7 @@ import {
   verifyAuthenticationResponse,
   verifyRegistrationResponse,
   type AuthenticationResponseJSON,
-  type AuthenticatorTransportFuture,
+  type AuthenticatorTransport,
   type PublicKeyCredentialCreationOptionsJSON,
   type PublicKeyCredentialRequestOptionsJSON,
   type RegistrationResponseJSON,
@@ -78,12 +78,10 @@ const encodeBytes = (bytes: Uint8Array): string => Buffer.from(bytes).toString('
 const toStrictBytes = (bytes: Uint8Array): Uint8Array<ArrayBuffer> => Uint8Array.from(bytes) as Uint8Array<ArrayBuffer>
 const decodeBytes = (value: string): Uint8Array<ArrayBuffer> => toStrictBytes(Buffer.from(value, 'base64url'))
 
-const parseTransports = (value: string): AuthenticatorTransportFuture[] => {
+const parseTransports = (value: string): string[] => {
   try {
     const parsed = JSON.parse(value) as unknown
-    return Array.isArray(parsed)
-      ? parsed.filter((item): item is AuthenticatorTransportFuture => typeof item === 'string')
-      : []
+    return Array.isArray(parsed) ? parsed.filter((item): item is string => typeof item === 'string') : []
   } catch {
     return []
   }
@@ -195,7 +193,7 @@ export const createPasskeyService = (
         attestationType: 'none',
         excludeCredentials: existing.map((credential) => ({
           id: credential.id,
-          transports: parseTransports(credential.transports),
+          transports: parseTransports(credential.transports) as AuthenticatorTransport[],
         })),
         authenticatorSelection: {
           residentKey: 'preferred',
