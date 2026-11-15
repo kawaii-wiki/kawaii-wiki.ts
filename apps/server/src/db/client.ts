@@ -132,6 +132,18 @@ export const createLibsqlDb = (config: LibsqlDatabaseConfig, options: CreateDbOp
     ...(config.authToken ? { authToken: config.authToken } : {}),
   } as ConstructorParameters<typeof LibsqlDatabase>[1]) as RawDatabase
 
+  if (target.syncUrl) {
+    // libsql's native get() can retain a read cursor on Bun 1.4, pinning the
+    // replica to an old snapshot even after sync(). Drain the statement before
+    // returning its first row so subsequent writes and FTS reads see new frames.
+    const prepare = client.prepare.bind(client)
+    client.prepare = (sql) => {
+      const statement = prepare(sql)
+      statement.get = (...params) => statement.all(...params)[0]
+      return statement
+    }
+  }
+
   // Pull an existing primary before inspecting or migrating the local replica.
   if (target.syncUrl) client.sync?.()
   client.exec('PRAGMA foreign_keys = ON;')

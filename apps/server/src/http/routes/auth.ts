@@ -32,40 +32,31 @@ const DUMMY_PASSWORD_HASH = '$2b$10$PSYytLzRuphaANMsomVtoeDEA6h2rM8oAmCeA8xKwnAb
 const base64UrlString = t.String({ minLength: 1 })
 const credentialType = t.Literal('public-key')
 const authenticatorAttachment = t.Union([t.Literal('platform'), t.Literal('cross-platform')])
-const authenticatorTransport = t.Union([
-  t.Literal('ble'),
-  t.Literal('cable'),
-  t.Literal('hybrid'),
-  t.Literal('internal'),
-  t.Literal('nfc'),
-  t.Literal('smart-card'),
-  t.Literal('usb'),
-])
 const clientExtensionResults = t.Object({}, { additionalProperties: true })
 const providerCallbackQuery = t.Object({}, { additionalProperties: true })
 
-const registrationResponse = t.Object({
+const credentialBase = {
   id: base64UrlString,
   rawId: base64UrlString,
   type: credentialType,
   authenticatorAttachment: t.Optional(authenticatorAttachment),
   clientExtensionResults,
+}
+
+const registrationResponse = t.Object({
+  ...credentialBase,
   response: t.Object({
     clientDataJSON: base64UrlString,
     attestationObject: base64UrlString,
     authenticatorData: t.Optional(base64UrlString),
-    transports: t.Optional(t.Array(authenticatorTransport)),
+    transports: t.Optional(t.Array(t.String())),
     publicKeyAlgorithm: t.Optional(t.Number()),
     publicKey: t.Optional(base64UrlString),
   }),
 })
 
 const authenticationResponse = t.Object({
-  id: base64UrlString,
-  rawId: base64UrlString,
-  type: credentialType,
-  authenticatorAttachment: t.Optional(authenticatorAttachment),
-  clientExtensionResults,
+  ...credentialBase,
   response: t.Object({
     clientDataJSON: base64UrlString,
     authenticatorData: base64UrlString,

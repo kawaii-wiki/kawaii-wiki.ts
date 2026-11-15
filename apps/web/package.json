@@ -1,6 +1,6 @@
 {
   "name": "@kawaii-wiki/web",
-  "version": "1.0.34",
+  "version": "1.0.35",
   "license": "0BSD",
   "private": true,
   "type": "module",
@@ -24,7 +24,7 @@
     "codemirror": "^6.0.1",
     "diff": "^9.0.0",
     "highlight.js": "^11.11.1",
-    "katex": "^0.18.0",
+    "katex": "^0.18.11",
     "mermaid": "^12.0.0",
     "pinia": "^4.0.2",
     "vue": "^3.5.18",
@@ -38,9 +38,9 @@
     "@vitejs/plugin-vue": "^6.0.7",
     "@types/diff": "^8.0.0",
     "@vue/test-utils": "^2.4.11",
-    "happy-dom": "^20.10.6",
+    "happy-dom": "^21.0.4",
     "unocss": "^66.7.5",
-    "vite": "^8.1.4",
+    "vite": "^8.3.5",
     "vitest": "^5.0.1",
     "vue-tsc": "^3.3.7"
   }
